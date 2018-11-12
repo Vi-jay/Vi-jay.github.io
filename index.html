@@ -538,135 +538,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/09/Taro记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Vijay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vijay">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/09/Taro记录/" itemprop="url">Taro记录</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-09T21:54:47+08:00">
-                2018-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Taro记录"><a href="#Taro记录" class="headerlink" title="Taro记录"></a>Taro记录</h3><ol>
-<li>构造器内必须有<code>super(...arguments)</code>,taro框架对组件有注入.</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">construter()&#123;</span><br><span class="line">    <span class="keyword">super</span>(...arguments);</span><br><span class="line">&#125;</span><br><span class="line">&lt;Cmp onClick=&#123;<span class="keyword">this</span>.clickhandle.bind(<span class="keyword">this</span>)&#125;&gt;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>属性函数不允许<code>uploadHandle = async () =&gt; {}</code></p>
-</li>
-<li><p>不允许出现<code>isH5&amp;&amp;&lt;Comp ref={&quot;xx&quot;}/&gt;</code>无法在条件判断渲染的表达式中获取组件的ref</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/08/typescript/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1192,280 +1063,8 @@
 <p>外部盒子纵向移动，内部盒子横向移动 形成一个斜线运动，此时给纵向移动的盒子加上抛物线的缓动函数，就形成了一个抛物线运动。</p>
 <p>获取球体的位置，获取目标的位置 计算出移动的距离，形成动画</p>
 </blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    #app &#123;</span></span><br><span class="line"><span class="undefined">        background: aqua;</span></span><br><span class="line"><span class="undefined">        width: 50px;</span></span><br><span class="line"><span class="undefined">        height: 50px;</span></span><br><span class="line"><span class="undefined">        border-radius: 50%;</span></span><br><span class="line"><span class="undefined">        margin-left: 600px;</span></span><br><span class="line"><span class="undefined">        transition: transform .8s linear;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .outer &#123;</span></span><br><span class="line"><span class="undefined">        transition: transform .8s cubic-bezier(0.39, -0.4, 0.83, 0.23);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .basket &#123;</span></span><br><span class="line"><span class="undefined">        position: fixed;</span></span><br><span class="line"><span class="undefined">        bottom: 0;</span></span><br><span class="line"><span class="undefined">        right: 0;</span></span><br><span class="line"><span class="undefined">        width: 300px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        background: yellow;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"outer"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"basket"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> app = <span class="built_in">document</span>.querySelector(<span class="string">"#app"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> outer = <span class="built_in">document</span>.querySelector(<span class="string">".outer"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> basket = <span class="built_in">document</span>.querySelector(<span class="string">".basket"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> appBound = app.getBoundingClientRect();</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> basketBound = basket.getBoundingClientRect();</span></span><br><span class="line"><span class="javascript">    outer.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="comment">//150是宽度的一半 25是球体的一半 丢入正中间</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> endLeft = basketBound.left + <span class="number">150</span> - <span class="number">25</span> - appBound.left;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> endTop = basketBound.top - appBound.top;</span></span><br><span class="line"><span class="javascript">        outer.style.transform = <span class="string">`translateY(<span class="subst">$&#123;endTop&#125;</span>px)`</span>;</span></span><br><span class="line"><span class="javascript">        app.style.transform = <span class="string">`translateX(<span class="subst">$&#123;endLeft&#125;</span>px)`</span>;</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-id">#app</span> &#123;</span></span><br><span class="line"><span class="undefined">        background: aqua;</span></span><br><span class="line"><span class="undefined">        width: 50px;</span></span><br><span class="line"><span class="undefined">        height: 50px;</span></span><br><span class="line"><span class="undefined">        border-radius: 50%;</span></span><br><span class="line"><span class="undefined">        margin-left: 600px;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">transition</span>: <span class="selector-tag">transform</span> <span class="selector-class">.8s</span> <span class="selector-tag">linear</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.outer</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">transition</span>: <span class="selector-tag">transform</span> <span class="selector-class">.8s</span> <span class="selector-tag">cubic-bezier</span>(0<span class="selector-class">.39</span>, <span class="selector-tag">-0</span><span class="selector-class">.4</span>, 0<span class="selector-class">.83</span>, 0<span class="selector-class">.23</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.basket</span> &#123;</span></span><br><span class="line"><span class="undefined">        position: fixed;</span></span><br><span class="line"><span class="undefined">        bottom: 0;</span></span><br><span class="line"><span class="undefined">        right: 0;</span></span><br><span class="line"><span class="undefined">        width: 300px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        background: yellow;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"outer"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"basket"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    const app = document.querySelector("#app");</span></span><br><span class="line"><span class="undefined">    const outer = document.querySelector(".outer");</span></span><br><span class="line"><span class="undefined">    const basket = document.querySelector(".basket");</span></span><br><span class="line"><span class="undefined">    const appBound = app.getBoundingClientRect();</span></span><br><span class="line"><span class="undefined">    const basketBound = basket.getBoundingClientRect();</span></span><br><span class="line"><span class="undefined">    outer.addEventListener("click", function (e) &#123;</span></span><br><span class="line"><span class="undefined">        //150是宽度的一半 25是球体的一半 丢入正中间</span></span><br><span class="line"><span class="undefined">        const endLeft = basketBound.left + 150 - 25 - appBound.left;</span></span><br><span class="line"><span class="undefined">        const endTop = basketBound.top - appBound.top;</span></span><br><span class="line"><span class="undefined">        outer.style.transform = `translateY($&#123;endTop&#125;px)`;</span></span><br><span class="line"><span class="undefined">        app.style.transform = `translateX($&#123;endLeft&#125;px)`;</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="图片模糊动画"><a href="#图片模糊动画" class="headerlink" title="图片模糊动画"></a>图片模糊动画</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#app</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">"tup.jpg"</span>) no-repeat;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">500px</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#app</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">filter</span>: <span class="built_in">blur</span>(10px);</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">background</span>: inherit;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#app</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">filter</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/01/浏览器兼容/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Vijay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vijay">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/01/浏览器兼容/" itemprop="url">浏览器兼容</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-01T15:45:55+08:00">
-                2018-10-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/01/自动化构建工具/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Vijay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vijay">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/01/自动化构建工具/" itemprop="url">自动化构建工具</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-01T15:44:38+08:00">
-                2018-10-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/webpack/" itemprop="url" rel="index">
-                    <span itemprop="name">webpack</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><h1 id="gulp-读音-gəlp"><a href="#gulp-读音-gəlp" class="headerlink" title="gulp(读音:gəlp)"></a>gulp(读音:gəlp)</h1><h3 id="常用五大方法"><a href="#常用五大方法" class="headerlink" title="常用五大方法"></a>常用五大方法</h3><ul>
-<li><code>gulp.task</code> 注册一个方法</li>
-<li><code>gulp.src</code> 读取文件<ul>
-<li><code>glup.src(...).pipe(...)</code> 传递流</li>
-</ul>
-</li>
-<li><code>glup.dest</code> 写文件</li>
-<li><code>glup.run</code> 运行方法</li>
-<li><code>glup.watch</code> 监听文件变化</li>
-</ul>
-<p>例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>);</span><br><span class="line"><span class="keyword">const</span> sass = <span class="built_in">require</span>(<span class="string">"gulp-sass"</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">"compiler-scss"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">"./css/*.scss"</span>)</span><br><span class="line">        .pipe(sass())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">"./dist"</span>))</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">"watch"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.watch(<span class="string">"./css/*.scss"</span>,[<span class="string">'compiler-scss'</span>])</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">"default"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.run(<span class="string">"watch"</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//命令行运行gulp即可 默认会执行default任务</span></span><br><span class="line"><span class="comment">//也可以使用gulp命令指定 执行某个任务 gulp compiler-scss</span></span><br></pre></td></tr></table></figure>
 
           
         
@@ -1667,6 +1266,525 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/23/seo优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vijay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vijay">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/23/seo优化/" itemprop="url">seo优化</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-23T23:42:23+08:00">
+                2018-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/seo/" itemprop="url" rel="index">
+                    <span itemprop="name">seo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>seo优化技巧  <code>关键词:&quot;内链&quot;,&quot;外链&quot;,&quot;标签权重&quot;,&quot;锚文本优化&quot;,&quot;慎用Frame框架&quot;</code></p>
+</blockquote>
+<ol>
+<li>meta元素<ul>
+<li>description 不要超过150字</li>
+<li>keywords 英文逗号分隔</li>
+</ul>
+</li>
+<li>标签权重<code>SEO中HTML标签权重</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">HTML标签权重分值排列</span><br><span class="line">　　内部链接文字：10分</span><br><span class="line">　　标题title：10分</span><br><span class="line">　　域名：7分</span><br><span class="line">　　H1，H2字号标题：5分</span><br><span class="line">　　每段首句：5分</span><br><span class="line">　　路径或文件名：4分</span><br><span class="line">　　相似度(关键词堆积)：4分</span><br><span class="line">　　每句开头：1.5分</span><br><span class="line">　　加粗或斜体：1分</span><br><span class="line">　　文本用法(内容)：1分</span><br><span class="line">　　title属性：1分 (注意不是title》， 是title属性， 比如a href=… title=”)</span><br><span class="line">　　alt标记：0.5分</span><br><span class="line">　　Meta描述(Description属性)：0.5分</span><br><span class="line">　　Meta关键词(Keywords属性)：0.05分</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>静态页面</p>
+<p>将信息页面，网站首页等改为静态页面，静态页面更利于seo的收录。</p>
+<p>一版用于展示型的网站</p>
+</li>
+</ol>
+<ol start="4">
+<li><p>图片的关键词优化</p>
+<p>图片的替代关键词也不要忽略，其另外一方面的作用是，当图片不能显示的时候，可以给访问者一个替代解释语句</p>
+</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/23/seo优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/09/移动端rem适配方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vijay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vijay">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/09/移动端rem适配方案/" itemprop="url">移动端rem适配方案</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-09T16:17:20+08:00">
+                2018-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/移动端web/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*改变字体大小*/</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">doc, win</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> docEl = doc.documentElement,</span><br><span class="line">  resizeEvt = <span class="string">'orientationchange'</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="string">'orientationchange'</span> : <span class="string">'resize'</span>,</span><br><span class="line">  recalc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> clientWidth = docEl.clientWidth;</span><br><span class="line">    <span class="keyword">if</span> (!clientWidth) <span class="keyword">return</span>;</span><br><span class="line">    docEl.style.fontSize = <span class="number">100</span> * (clientWidth / <span class="number">750</span>) + <span class="string">'px'</span>;</span><br><span class="line">    <span class="comment">//750是设计图的宽度,10是一个基准宽度(html的font-size值)</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!doc.addEventListener) <span class="keyword">return</span>;    </span><br><span class="line">win.addEventListener(resizeEvt, recalc, <span class="literal">false</span>);</span><br><span class="line">doc.addEventListener(<span class="string">'DOMContentLoaded'</span>, recalc, <span class="literal">false</span>);</span><br><span class="line">&#125;)(<span class="built_in">document</span>, <span class="built_in">window</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*---改变缩放比---*/</span></span><br><span class="line"><span class="keyword">var</span> iScale = <span class="number">1</span>;</span><br><span class="line">iScale = iScale / <span class="built_in">window</span>.devicePixelRatio;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">'&lt;meta name="viewport" content="width=device-width,user-scalable=no,initial-scale='</span> + iScale + <span class="string">',minimum-scale='</span> + iScale + <span class="string">',maximum-scale='</span> + iScale + <span class="string">'"&gt;'</span>)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/07/前端面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vijay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vijay">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/07/前端面试题/" itemprop="url">前端面试题</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-07T17:36:57+08:00">
+                2018-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li><p>Doctype作用？严格模式与混杂模式如何区分？它们有何意义?</p>
+<ul>
+<li>doctype启用标准模式 根据css规范渲染页面，否则则以兼容模式渲染，兼容模式会模拟老式浏览器进行渲染 会造成 <strong>怪异的</strong>css渲染</li>
+</ul>
+</li>
+<li><p>行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？</p>
+<ul>
+<li>行内元素: span a b i em  strong</li>
+<li>块级元素:  div h1 p section article ul li ol</li>
+<li>空元素: img hr br link meta</li>
+</ul>
+</li>
+<li><p>页面导入样式时，使用link和@import有什么区别？</p>
+<ul>
+<li>link: 会阻塞页面渲染，<strong>等link指向的样式文件被解析后才会渲染下面的元素</strong></li>
+<li>@import: 等页面渲染完后加载文件</li>
+</ul>
+</li>
+<li><p>介绍一下你对浏览器内核的理解？</p>
+<ul>
+<li><p>js引擎主要用于执行脚本文件</p>
+</li>
+<li><p>渲染引擎主要用于解析dom和css规则,并进行排版到浏览器 显示现有的样式界面</p>
+<p>解析 HTML 构建 DOM 树 -&gt; 构建渲染树 -&gt; 渲染树布局 -&gt; 渲染树绘制。</p>
+</li>
+</ul>
+</li>
+<li><p>html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</p>
+<ul>
+<li><p>新特性:</p>
+<ul>
+<li>canvas 绘画</li>
+<li>video audio 媒体元素</li>
+<li>localstorage sessionstorage 离线储存</li>
+</ul>
+</li>
+<li><p>处理浏览器兼容</p>
+<ul>
+<li><p>可以使用document.createElement(tag)来创建元素</p>
+</li>
+<li><p>可以在页头加上 判断 如果是IE9以下的浏览器 加上垫片</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="comment">  		&lt;script&gt; src="http://html5shim.googlecode.com/svn/trunk/html5.js"&lt;/script&gt;</span></span><br><span class="line"><span class="comment">  	 &lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>如何区分HTML5</p>
+<ul>
+<li>DOCTYPE声明\新增的结构元素\功能元素</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/07/前端面试题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1721,7 +1839,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1732,7 +1850,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1743,7 +1861,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
