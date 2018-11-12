@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="微信公众号," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="微信公众号获取token有两个接口不要搞混，分别是  https://api.weixin.qq.com/sns/oauth2/access_token 获取用户登录凭证  https://api.weixin.qq.com/cgi-bin/token 获取接口请求安全验证凭证  切记:需要把访问ip加入白名单    jssdk签名校验中的url参数必须与当前页面完全一致包括/除#后hash码">
+<meta name="keywords" content="微信公众号">
+<meta property="og:type" content="article">
+<meta property="og:title" content="公众号">
+<meta property="og:url" content="http://yoursite.com/2018/10/09/公众号/index.html">
+<meta property="og:site_name" content="Vijay">
+<meta property="og:description" content="微信公众号获取token有两个接口不要搞混，分别是  https://api.weixin.qq.com/sns/oauth2/access_token 获取用户登录凭证  https://api.weixin.qq.com/cgi-bin/token 获取接口请求安全验证凭证  切记:需要把访问ip加入白名单    jssdk签名校验中的url参数必须与当前页面完全一致包括/除#后hash码">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-12T10:20:40.159Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="公众号">
+<meta name="twitter:description" content="微信公众号获取token有两个接口不要搞混，分别是  https://api.weixin.qq.com/sns/oauth2/access_token 获取用户登录凭证  https://api.weixin.qq.com/cgi-bin/token 获取接口请求安全验证凭证  切记:需要把访问ip加入白名单    jssdk签名校验中的url参数必须与当前页面完全一致包括/除#后hash码">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/09/公众号/"/>
+
+
+
+
+
+  <title>公众号 | Vijay</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Vijay</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">累了困了，喝东鹏特饮！</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/09/公众号/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vijay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vijay">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">公众号</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-09T21:55:24+08:00">
+                2018-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><p>微信公众号获取token有两个接口不要搞混，分别是</p>
+<ul>
+<li><p><code>https://api.weixin.qq.com/sns/oauth2/access_token</code> 获取用户登录凭证</p>
+</li>
+<li><p><code>https://api.weixin.qq.com/cgi-bin/token</code></p>
+<p>获取接口请求安全验证凭证  切记:需要把访问ip加入白名单</p>
+</li>
+</ul>
+</li>
+<li><p>jssdk签名校验中的url参数必须与当前页面完全一致包括/<code>除#后hash码</code></p>
+<p>坑点:签名参数url: “<a href="http://127.0.0.1:10086&quot;,当前访问&quot;http://127.0.0.1:10086/&quot;，此时不生效" target="_blank" rel="noopener">http://127.0.0.1:10086&quot;,当前访问&quot;http://127.0.0.1:10086/&quot;，此时不生效</a></p>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="常用接口"><a href="#常用接口" class="headerlink" title="常用接口"></a>常用接口</h3><ol>
+<li><p>获取openid用户凭证</p>
+<p><code>https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx2cf81aedebaef558&amp;secret=4cfe2f79cd0232c7bf73587ce0358857&amp;code=001lnsXK0dcIs62fdcXK0apuXK0lnsXo&amp;grant_type=authorization_code</code></p>
+</li>
+<li><p>获取用户微信信息</p>
+<p><code>https://api.weixin.qq.com/cgi-bin/user/info?access_token=14_OI2sVgaAJZrohHDW0QJDndyN1v3Nck9z4vLtZk81EP6_VD2MBhSdJedWYVrOmV2qLcjrfhagVreD1_QPKOXhvw&amp;openid=oBKlNwvrjBAYzeQ-et_V39rtaW5E&amp;lang=zh_CN</code></p>
+</li>
+<li><p>获取<strong>ticket</strong>注册jssdk的签名凭证</p>
+<p><code>https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=14_uipm-MxprIJVIRa-ocvNGGkT9nPgyCTWNV8hOyf9uoyYtjixaYmW6FeQlQy4NGbgZvT4Bujjoh01qYwTQAZMhV0s2SDC3QGsjQ8nwkhN4S7FCae6P3Cg5Qb8DbV0W-abG1VuVedP4WHkYAleSWVfADAGKJ&amp;type=jsapi</code></p>
+</li>
+<li><p>获取接口请求的安全凭证(上面接口需要的access_token从此接口获取)</p>
+<p><code>https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=wx2cf81aedebaef558&amp;secret=4cfe2f79cd0232c7bf73587ce0358857</code></p>
+</li>
+</ol>
+<h3 id="登录逻辑"><a href="#登录逻辑" class="headerlink" title="登录逻辑"></a>登录逻辑</h3><ol>
+<li><p>获取用户code</p>
+<p><strong>通过判断当前url是否带有自己的约定携带参数来判断是否已授权</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> appid = <span class="string">"wx2cf81aedebaef558"</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="string">'http://hl.zhycms.com'</span></span><br><span class="line"><span class="keyword">var</span> scope = <span class="string">'snsapi_base'</span> <span class="comment">// snsapi_base静默授权，snsapi_userinfo弹出授权页面</span></span><br><span class="line"><span class="keyword">var</span> state = <span class="string">'isRedirect'</span> <span class="comment">// 重定向带的参数</span></span><br><span class="line"><span class="built_in">window</span>.location.href = <span class="string">`https://open.weixin.qq.com/connect/oauth2/authorize?appid=<span class="subst">$&#123;appid&#125;</span>&amp;redirect_uri=<span class="subst">$&#123;url&#125;</span>&amp;response_type=code&amp;scope=<span class="subst">$&#123;scope&#125;</span>&amp;state=<span class="subst">$&#123;state&#125;</span>#wechat_redirect`</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将code传给后端，<strong>后端换取openid并挈带当前缓存的access_token</strong>请求用户信息接口，创建用户身份</p>
+</li>
+<li><p>后端根据当前缓存的access_token获取注册jssdk的ticket票据，并使用sha1加密获取到签名,返回给前端</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sha1 = crypto.createHash(<span class="string">'sha1'</span>);</span><br><span class="line"><span class="keyword">const</span> timeStamp = (<span class="built_in">Date</span>.now() / <span class="number">1000</span>).toFixed(<span class="number">0</span>);</span><br><span class="line"><span class="comment">//签名</span></span><br><span class="line"><span class="keyword">const</span> paramsBo = &#123;</span><br><span class="line">    jsapi_ticket: <span class="string">"kgt8ON7yVITDhtdwci0qeR_XCsW3QrveQHuJzXbJEcuPxaCCmG-NIRscST7YEz8Zc0CuRC21gjkZ5v8Ek-3tVQ"</span>,</span><br><span class="line">    url: <span class="string">"http://hl.zhycms.com/"</span>,</span><br><span class="line">    noncestr: randomCode(<span class="number">16</span>),</span><br><span class="line">    timestamp: timeStamp</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> signParams = ASCIISortToString(paramsBo);</span><br><span class="line"><span class="keyword">const</span> encodeBody = urlEncode(signParams, <span class="literal">true</span>, <span class="literal">true</span>) ;</span><br><span class="line">sha1.update(encodeBody);</span><br><span class="line"><span class="keyword">const</span> sha1data = sha1.digest(<span class="string">'hex'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sha1data);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>前端使用签名注册jssdk服务</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wx.config(&#123;</span><br><span class="line">    debug: <span class="literal">true</span>, <span class="comment">// 开启调试模式</span></span><br><span class="line">    appId: <span class="string">'wx2cf81aedebaef558'</span>, <span class="comment">// 必填，公众号的唯一标识</span></span><br><span class="line">    timestamp: <span class="string">'1539091831'</span>, <span class="comment">// 必填，生成签名的时间戳</span></span><br><span class="line">    nonceStr: <span class="string">'AAWE4IA19ZU5S4YL'</span>, <span class="comment">// 必填，生成签名的随机串</span></span><br><span class="line">    signature: <span class="string">'c45ecb609c6467eeff4e97904f2578d2b9cb74e7'</span>,<span class="comment">// 必填，签名</span></span><br><span class="line">    jsApiList: [<span class="string">"chooseWXPay"</span>] <span class="comment">// 必填，需要使用的JS接口列表</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="微信公众号支付"><a href="#微信公众号支付" class="headerlink" title="微信公众号支付"></a>微信公众号支付</h3><ol>
+<li><p>请求微信统一下单接口，获取支付sdk调起参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; totalPrice,  attachObj &#125; = params;</span><br><span class="line"><span class="keyword">const</span> ip = <span class="keyword">await</span> getClientIP();</span><br><span class="line"><span class="keyword">const</span> attachModel = <span class="keyword">await</span> PayAttach.create(&#123; <span class="attr">id</span>: <span class="literal">null</span>, <span class="attr">attachContent</span>: <span class="built_in">JSON</span>.stringify(attachObj) &#125;);</span><br><span class="line"><span class="keyword">let</span> payBody: any = &#123;</span><br><span class="line">    body: <span class="string">"测试支付"</span>,</span><br><span class="line">    nonce_str: randomCode(<span class="number">30</span>),</span><br><span class="line">    out_trade_no: randomCode(<span class="number">30</span>),</span><br><span class="line">    <span class="comment">// total_fee: 1,//单位:分</span></span><br><span class="line">    total_fee: (totalPrice * <span class="number">100</span>),<span class="comment">//单位:分</span></span><br><span class="line">    spbill_create_ip: ip,</span><br><span class="line">    notify_url: notifyUrl,</span><br><span class="line">    trade_type: <span class="string">"JSAPI"</span>,</span><br><span class="line">    appid: <span class="string">"wx2cf81aedebaef558"</span>,</span><br><span class="line">    openid:<span class="string">"oBKlNwvrjBAYzeQ-et_V39rtaW5E"</span>,</span><br><span class="line">    mch_id: <span class="string">"1488805742"</span>,</span><br><span class="line">    <span class="comment">// attach不能为空字符串 签名会报错 urlEncode方法不完善</span></span><br><span class="line">    attach: attachModel.id,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 按ASCII排序上面的键值对</span></span><br><span class="line">payBody = ASCIISortToString(payBody);</span><br><span class="line"><span class="comment">// 必在encode后的字符串后面加上key参数</span></span><br><span class="line"><span class="keyword">const</span> key = <span class="string">"admin888admin888admin888admin888"</span>;</span><br><span class="line"><span class="keyword">const</span> encodeBody = urlEncode(payBody, <span class="literal">true</span>, <span class="literal">true</span>) + <span class="string">`&amp;key=<span class="subst">$&#123;key&#125;</span>`</span>;</span><br><span class="line">payBody.sign = md5(encodeBody).toUpperCase();</span><br><span class="line"><span class="comment">// 转换成xml格式发送请求</span></span><br><span class="line"><span class="keyword">const</span> xmlData = jsonxml(&#123; <span class="attr">xml</span>: payBody &#125;);</span><br><span class="line">request(&#123;</span><br><span class="line">    url: <span class="string">"https://api.mch.weixin.qq.com/pay/unifiedorder"</span>,</span><br><span class="line">    method: <span class="string">'POST'</span>,</span><br><span class="line">    body: xmlData</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!err &amp;&amp; response.statusCode == <span class="number">200</span>) &#123;</span><br><span class="line">        to_json(body, (err, &#123; <span class="attr">xml</span>: data &#125;) =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (!err) &#123;</span><br><span class="line">                <span class="keyword">const</span> timeStamp = <span class="built_in">Date</span>.now() + <span class="string">""</span>;</span><br><span class="line">                <span class="keyword">const</span> packageStr = <span class="string">`prepay_id=<span class="subst">$&#123;data[<span class="string">'prepay_id'</span>]&#125;</span>`</span>;</span><br><span class="line">                <span class="comment">//签名</span></span><br><span class="line">                <span class="keyword">const</span> signParams = ASCIISortToString(&#123; <span class="attr">appId</span>: subAppid, <span class="attr">package</span>: packageStr, <span class="attr">nonceStr</span>: data[<span class="string">"nonce_str"</span>], <span class="attr">signType</span>: <span class="string">"MD5"</span>, timeStamp &#125;);</span><br><span class="line">                <span class="keyword">const</span> encodeBody = urlEncode(signParams, <span class="literal">true</span>, <span class="literal">true</span>) + <span class="string">`&amp;key=<span class="subst">$&#123;key&#125;</span>`</span>;</span><br><span class="line">                <span class="keyword">const</span> paySign = md5(encodeBody).toUpperCase();</span><br><span class="line">                <span class="comment">// 返回签名处理后的值</span></span><br><span class="line">                resolve(&#123; ...data, timeStamp, <span class="attr">prepay_id</span>: packageStr, <span class="attr">sign</span>: paySign &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        loggerError(err);</span><br><span class="line">    &#125;</span><br><span class="line">    reject(<span class="literal">null</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据微信接口返回配置参数调起支付sdk</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">wx.chooseWXPay(&#123;</span><br><span class="line">    timestamp: wxConfig[<span class="string">'timeStamp'</span>], <span class="comment">// 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符</span></span><br><span class="line">    nonceStr: wxConfig[<span class="string">'nonce_str'</span>], <span class="comment">// 支付签名随机串，不长于 32 位</span></span><br><span class="line">    package: wxConfig[<span class="string">'prepay_id'</span>], <span class="comment">// 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）</span></span><br><span class="line">    signType: <span class="string">'MD5'</span>, <span class="comment">// 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'</span></span><br><span class="line">    paySign: wxConfig[<span class="string">'sign'</span>], <span class="comment">// 支付签名</span></span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 支付成功后的回调函数</span></span><br><span class="line">        <span class="built_in">console</span>.log(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>后端暴露接口响应微信回调，响应支付成功后续操作</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微信公众号/" rel="tag"># 微信公众号</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/09/Taro记录/" rel="next" title="Taro记录">
+                <i class="fa fa-chevron-left"></i> Taro记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/12/架构/分布式与集群关系/" rel="prev" title="分布式与集群关系">
+                分布式与集群关系 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQzMC8xNTk1Nw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Vijay" />
+            
+              <p class="site-author-name" itemprop="name">Vijay</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Vi-jay" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用接口"><span class="nav-number">1.</span> <span class="nav-text">常用接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登录逻辑"><span class="nav-number">2.</span> <span class="nav-text">登录逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微信公众号支付"><span class="nav-number">3.</span> <span class="nav-text">微信公众号支付</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vijay</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

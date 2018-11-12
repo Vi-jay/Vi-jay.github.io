@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="css,javascript,浏览器," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="javascripttypeof和instanceof运算符 typeof 有安全机制，对于为声明的变量返回undefined .可以用于判断未声明的变量  typeof可以准确返回基本类型. null除外.  对于 null 来说，虽然它是基本类型，但是会显示 object，这是一个存在很久了的 Bug  1typeof null // &apos;object&apos;  PS：为什么会出现这种情况呢？因为在">
+<meta name="keywords" content="css,javascript,浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端需要注意的知识">
+<meta property="og:url" content="http://yoursite.com/2018/09/29/前端需要注意的知识/index.html">
+<meta property="og:site_name" content="Vijay">
+<meta property="og:description" content="javascripttypeof和instanceof运算符 typeof 有安全机制，对于为声明的变量返回undefined .可以用于判断未声明的变量  typeof可以准确返回基本类型. null除外.  对于 null 来说，虽然它是基本类型，但是会显示 object，这是一个存在很久了的 Bug  1typeof null // &apos;object&apos;  PS：为什么会出现这种情况呢？因为在">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p5kiaku9x.bkt.clouddn.com/blog/20181002173122.png?imageslim">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/4/12/162b895b452b306c?imageslim">
+<meta property="og:updated_time" content="2018-11-12T10:22:24.819Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端需要注意的知识">
+<meta name="twitter:description" content="javascripttypeof和instanceof运算符 typeof 有安全机制，对于为声明的变量返回undefined .可以用于判断未声明的变量  typeof可以准确返回基本类型. null除外.  对于 null 来说，虽然它是基本类型，但是会显示 object，这是一个存在很久了的 Bug  1typeof null // &apos;object&apos;  PS：为什么会出现这种情况呢？因为在">
+<meta name="twitter:image" content="http://p5kiaku9x.bkt.clouddn.com/blog/20181002173122.png?imageslim">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/29/前端需要注意的知识/"/>
+
+
+
+
+
+  <title>前端需要注意的知识 | Vijay</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Vijay</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">累了困了，喝东鹏特饮！</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/29/前端需要注意的知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vijay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vijay">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">前端需要注意的知识</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T17:07:01+08:00">
+                2018-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h2><h3 id="typeof和instanceof运算符"><a href="#typeof和instanceof运算符" class="headerlink" title="typeof和instanceof运算符"></a>typeof和instanceof运算符</h3><ul>
+<li><p>typeof 有安全机制，对于为声明的变量返回undefined .可以用于判断未声明的变量</p>
+</li>
+<li><p>typeof可以准确返回基本类型. null除外.</p>
+<ul>
+<li>对于 <code>null</code> 来说，虽然它是基本类型，但是会显示 <code>object</code>，这是一个存在很久了的 Bug</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> <span class="comment">// 'object'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>PS：为什么会出现这种情况呢？因为在 JS 的最初版本中，使用的是 32 位系统，为了性能考虑使用低位存储了变量的类型信息，<code>000</code> 开头代表是对象，然而 <code>null</code> 表示为全零，所以将它错误的判断为 <code>object</code> 。虽然现在的内部类型判断代码已经改变了，但是对于这个 Bug 却是一直流传下来。</p>
+</blockquote>
+</li>
+<li><p>instanceof可以准确判断引用类型（对象的类型）. instanceof是判断对象的原型链中是否能找到指定类型的prototype</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">d <span class="keyword">instanceof</span> <span class="built_in">Date</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="获取对象的类型"><a href="#获取对象的类型" class="headerlink" title="获取对象的类型"></a>获取对象的类型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.apply(a); <span class="comment">// '[object Symbol]'</span></span><br><span class="line"><span class="comment">//[object 类型]注意 类型首字母都是大写的</span></span><br></pre></td></tr></table></figure>
+<h3 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h3><ul>
+<li>利用script标签可以跨域请求的特性获取服务端的数据,并以js的格式返回，<strong>通过调用约定的callback函数将值返回被调用回调函数</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonp</span>(<span class="params">url, jsonpCallBack, callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> scriptDom = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">    scriptDom.src = url;</span><br><span class="line">    scriptDom.type = <span class="string">"text/javascript"</span>;</span><br><span class="line">    <span class="built_in">window</span>[jsonpCallBack] = <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">        callback(data);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(scriptDom);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">jsonp(<span class="string">"http://xxx"</span>,</span><br><span class="line">    <span class="string">"callback"</span>,</span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(value);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="去重和排序"><a href="#去重和排序" class="headerlink" title="去重和排序"></a>去重和排序</h3><p>利用es6 Set对象特性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr= [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">8</span>];</span><br><span class="line">[...new <span class="built_in">Set</span>(arr)].sort(<span class="function">(<span class="params">p,c</span>)=&gt;</span>c-p)</span><br></pre></td></tr></table></figure>
+<h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><ul>
+<li><p><code>CommonJs</code> 是 Node 独有的规范，每个 JavaScript 文件就是一个独立的模块上下文（module context），在这个上下文中默认创建的属性都是私有的。也就是说，在一个文件定义的变量（还包括函数和类），都是私有的，对其他文件是不可见的。 <code>CommonJS是同步加载模块,在浏览器中会出现堵塞情况，所以不适用,大多用于node.js中</code></p>
+</li>
+<li><p>AMD规范，需要定义回调define方式 ，使用require.js来异步加载js文件</p>
+</li>
+<li><p>ES6规范，可以导出类、方法，自动适用严格模式 ,使用webpack等工具将js写入到同一个文件中（可使用插件分离，减少文件体积）</p>
+</li>
+<li><p><strong>对于 <code>CommonJS</code> 和 ES6 中的模块化的两者区别是：</strong></p>
+<ul>
+<li>前者支持动态导入，也就是 <code>require(${path}/xx.js)</code>，后者目前不支持，但是已有提案</li>
+<li>前者是同步导入，因为用于服务端，文件都在本地，同步导入即使卡住主线程影响也不大。而后者是异步导入，因为用于浏览器，需要下载文件，如果也采用同步导入会对渲染有很大影响</li>
+<li>前者在导出时都是值拷贝，就算导出的值变了，导入的值也不会改变，所以如果想更新值，必须重新导入一次。但是后者采用实时绑定的方式，导入导出的值都指向同一个内存地址，所以导入值会跟随导出值变化</li>
+<li>后者会编译成 <code>require/exports</code> 来执行的</li>
+</ul>
+</li>
+</ul>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><h4 id="转Boolean"><a href="#转Boolean" class="headerlink" title="转Boolean"></a>转Boolean</h4><p>在条件判断时，除了 <code>undefined</code>， <code>null</code>， <code>false</code>， <code>NaN</code>， <code>&#39;&#39;</code>， <code>0</code>， <code>-0</code>，其他所有值都转为 <code>true</code>，包括所有对象</p>
+<h4 id="对象转基本类型"><a href="#对象转基本类型" class="headerlink" title="对象转基本类型"></a>对象转基本类型</h4><p>对象在转换基本类型时，首先会调用 <code>valueOf</code> 然后调用 <code>toString</code>。并且这两个方法你是可以重写的。</p>
+<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><ol>
+<li>如果是对象，就通过 <code>toPrimitive</code> 转换对象</li>
+<li>如果是字符串，就通过 <code>unicode</code> 字符索引来比较</li>
+<li><strong>数字和字符串比较时会把字符串转换成数字，如果字符串无法转换成数字则为NaN</strong></li>
+<li><strong>NaN不等于NaN，NaN和任何数字比较，结果都是False</strong></li>
+</ol>
+<h3 id="深浅拷贝"><a href="#深浅拷贝" class="headerlink" title="深浅拷贝"></a>深浅拷贝</h3><h4 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign(target,source) <span class="comment">//将source上的第一层属性拷贝到target上</span></span><br></pre></td></tr></table></figure>
+<h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(source)) <span class="comment">//根据source生成一个新对象</span></span><br></pre></td></tr></table></figure>
+<p>局限性:</p>
+<ul>
+<li>会忽略 <code>undefined</code></li>
+<li>不能序列化函数</li>
+<li>不能解决循环引用的对象</li>
+</ul>
+<h3 id="解决小数计算精度问题"><a href="#解决小数计算精度问题" class="headerlink" title="解决小数计算精度问题"></a>解决小数计算精度问题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseFloat</span>((<span class="number">0.3</span> <span class="number">-0.2</span>).toFixed(<span class="number">10</span>)) <span class="comment">//0.1</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><h3 id="渲染机制"><a href="#渲染机制" class="headerlink" title="渲染机制"></a>渲染机制</h3><ul>
+<li>解析html构建DOM树</li>
+<li>解析css构建CSSOM树</li>
+<li>合并DOM和CSSOM树生成一个渲染树(RenderTree)</li>
+<li>根据渲染树来布局，计算每个节点的位置</li>
+<li>使用GPU绘制，合并图层（根据CSS渲染的样式是层叠的），显示在屏幕上</li>
+</ul>
+<h3 id="页面性能优化"><a href="#页面性能优化" class="headerlink" title="页面性能优化"></a>页面性能优化</h3><h4 id="重绘（repoint）与回流-reflow"><a href="#重绘（repoint）与回流-reflow" class="headerlink" title="重绘（repoint）与回流(reflow)"></a>重绘（repoint）与回流(reflow)</h4><ul>
+<li>重绘是当节点需要更改外观而不会影响布局的，比如改变 <code>color</code> 就叫称为重绘</li>
+<li>回流是修改布局或者几何属性发生改变</li>
+</ul>
+<blockquote>
+<p>回流一定重绘，重绘不一定回流。深层次的节点发生回流可能会导致所有父节点回流（当父节点的尺寸依赖子节点时）</p>
+</blockquote>
+<ul>
+<li>将translate代替top left来进行动画，translate不影响布局，不会发生回流</li>
+<li>回流次数很多的动画可以使用<code>requestAnimationFrame</code>api,(<code>requestAnimationFrame</code>任务需要使用回调重复执行)</li>
+<li>css选择符从右往左匹配，不建议过深层的嵌套</li>
+<li>把 DOM 离线后修改，比如：先把 DOM 给 <code>display:none</code> (有一次 Reflow)，然后你修改100次，然后再把它显示出来</li>
+<li>不要把 DOM 结点的属性值放在一个循环里当成循环里的变量</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 获取 offsetTop 会导致回流，因为需要去获取正确的值</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">document</span>.querySelector(<span class="string">'.test'</span>).style.offsetTop)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>不要使用 table 布局，可能很小的一个小改动会造成整个 table 的重新布局</li>
+</ul>
+<h3 id="api"><a href="#api" class="headerlink" title="api"></a>api</h3><ul>
+<li><p>获取元素尺寸</p>
+<p><code>dom.offsetWidth/offsetHeight</code> 可以拿到页面<strong>渲染后的元素尺寸</strong></p>
+</li>
+<li><p>获取元素相对<strong>当前页面四边的距离</strong></p>
+<p><code>dom.getBoundingClientRect</code> 返回一个对象包含top left bottom right width height 六个属性</p>
+</li>
+</ul>
+<h3 id="性能优化图"><a href="#性能优化图" class="headerlink" title="性能优化图"></a>性能优化图</h3><p><img src="http://p5kiaku9x.bkt.clouddn.com/blog/20181002173122.png?imageslim" alt=""></p>
+<ul>
+<li>图片体积优化 <code>base64</code> <code>雪碧图</code> <code>CDN</code></li>
+<li>静态资源缓存，gzip压缩</li>
+<li>编译进程设置<code>production</code>参数，所有框架都会判断是否有production参数来开启生产环境</li>
+</ul>
+<h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><h4 id="捕获阶段"><a href="#捕获阶段" class="headerlink" title="捕获阶段"></a>捕获阶段</h4><ul>
+<li>从最外层元素document -&gt; 触发事件的元素</li>
+</ul>
+<h4 id="冒泡阶段"><a href="#冒泡阶段" class="headerlink" title="冒泡阶段"></a>冒泡阶段</h4><ul>
+<li>从触发事件的元素 -&gt; 最外层document元素</li>
+<li><code>addEventListener</code>方法第三个参数如果是true则<strong>监听元素事件的捕获阶段</strong>,如果是false(或者不填)则<strong>监听元素事件的冒泡阶段</strong></li>
+<li>事件代理的原则就是在父节点上<strong>采用捕获事件流</strong>,然后根据<code>event.target</code>来判断触发事件的元素,进行不同的任务调度。</li>
+</ul>
+<h4 id="阻止表单提交"><a href="#阻止表单提交" class="headerlink" title="阻止表单提交"></a>阻止表单提交</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onsubmit</span>=<span class="string">"return false"</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="阻止事件冒泡与传递"><a href="#阻止事件冒泡与传递" class="headerlink" title="阻止事件冒泡与传递"></a>阻止事件冒泡与传递</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">clickHandle(e)&#123;</span><br><span class="line">    e.preventDefault(); <span class="comment">//阻止事件传递 例如:阻止表单提交</span></span><br><span class="line">    e.stopPropagation(); <span class="comment">//阻止事件向上冒泡</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="移动端触摸事件"><a href="#移动端触摸事件" class="headerlink" title="移动端触摸事件"></a>移动端触摸事件</h3><ul>
+<li>touchstart：当手指触碰到元素的时候触发</li>
+<li>touchmove：当手指在元素上滑动的时候触发 （超出元素依然有效）</li>
+<li>touchend：当手指离开屏幕的时候时候触发</li>
+</ul>
+<h3 id="script标签"><a href="#script标签" class="headerlink" title="script标签"></a>script标签</h3><ul>
+<li>默认是阻塞解析，当脚本加载执行完后继续渲染</li>
+<li><code>async</code>属性表示 当脚本异步下载完后立即执行</li>
+<li><code>defer</code>属性表示 当页面渲染完后再执行脚本</li>
+</ul>
+<h3 id="js获取元素的位置和尺寸"><a href="#js获取元素的位置和尺寸" class="headerlink" title="js获取元素的位置和尺寸"></a>js获取元素的位置和尺寸</h3><ul>
+<li><code>clientHeight</code>获取元素的<code>高度</code>+<code>内边距</code> <strong>不包含边框宽度</strong></li>
+<li><code>offsetHeight</code>获取元素的<code>高度</code>+<code>内边距</code>+<code>边框</code></li>
+<li><code>scrollHeight</code>获取元素的<code>内容高度</code>+<code>内边距</code>+<code>边框</code>   <strong>包含滚动窗口下方隐藏的尺寸</strong></li>
+<li><code>scrollTop</code>获取当前 <strong>可滚动元素</strong> <code>显示区域距离元素顶部距离</code></li>
+</ul>
+<h3 id="图片预加载"><a href="#图片预加载" class="headerlink" title="图片预加载"></a>图片预加载</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//让图片标签先加载一张占位图</span></span><br><span class="line">&lt;img src=<span class="string">"placehodler"</span> id=<span class="string">"preLoad"</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> target = <span class="built_in">document</span>.querySelector(<span class="string">"#preLoad"</span>);</span><br><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image(),source=<span class="string">"./055829545.jpg"</span>;</span><br><span class="line">img.src=source;</span><br><span class="line">img.onload=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    target.src=source</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="雪碧图"><a href="#雪碧图" class="headerlink" title="雪碧图"></a>雪碧图</h3><blockquote>
+<p>利用css<code>background-position</code>属性</p>
+<p><code>background-position: left 20px top 20px;</code>表示背景图片 从距离元素左边20 上方20像素开始渲染</p>
+<p>使用负数值即可实现从图片任意位置渲染图片</p>
+</blockquote>
+<hr>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><ul>
+<li><p>ie盒模型 (border-box)</p>
+<p>算上padding和border,content</p>
+</li>
+<li><p>标准盒模型(content-box)<code>默认</code></p>
+<p>只含content</p>
+</li>
+</ul>
+<h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h3><blockquote>
+<p>BFC(Block Formartting context),直译为块级格式化上下文</p>
+<p>我们常说的文档流其实分为定位流、浮动流和普通流三种。而<strong>普通流其实就是指BFC中的FC</strong>。BFC也就是块级文档流</p>
+<p>BFC内部元素排版会遵守 BFC的排版</p>
+</blockquote>
+<h4 id="会新建立一个BFC的情况"><a href="#会新建立一个BFC的情况" class="headerlink" title="会新建立一个BFC的情况"></a>会新建立一个BFC的情况</h4><p>​    【1】根元素，即HTML元素</p>
+<p>　　【2】float的值不为none</p>
+<p>　　【3】overflow的值不为visible</p>
+<p>　　【4】display的值为inline-block、table-cell、table-caption</p>
+<p>　　【5】position的值为absolute或fixed 　　</p>
+<h4 id="BFC排版规则"><a href="#BFC排版规则" class="headerlink" title="BFC排版规则"></a>BFC排版规则</h4><ol>
+<li>内部的盒子会从上往下一个一个排列</li>
+<li>内部盒子<strong>垂直方向外边距</strong>由margin决定，<strong>同一个BFC的两个相邻盒子的margin会发生重叠,取最大值</strong></li>
+<li>内部盒子全不从左向右排列</li>
+<li><strong>BFC的区域不会与浮动重叠</strong>，常用于做自适应布局</li>
+<li>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</li>
+<li><strong>计算BFC的高度时，浮动元素也参与计算</strong> ，常用于清除浮动</li>
+</ol>
+<h4 id="BFC有哪些作用"><a href="#BFC有哪些作用" class="headerlink" title="BFC有哪些作用"></a>BFC有哪些作用</h4><ol>
+<li><p>自适应两栏布局</p>
+</li>
+<li><p>可以阻止元素被浮动元素覆盖</p>
+</li>
+<li>可以包含浮动元素——清除内部浮动</li>
+<li>分属于不同的BFC时可以阻止margin重叠</li>
+</ol>
+<h3 id="长宽比（等比例缩放）"><a href="#长宽比（等比例缩放）" class="headerlink" title="长宽比（等比例缩放）"></a>长宽比（等比例缩放）</h3><p>子元素的padding百分比是相对父元素的宽度计算,<code>只需要改变宽度，整个元素会等比例缩放</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#00acec</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="selector-class">.pad</span> &#123;</span><br><span class="line">    <span class="comment">/*高度是宽度的2/3 实现了3:2*/</span></span><br><span class="line">	<span class="attribute">padding-bottom</span>: <span class="built_in">calc</span>(2 / 3 * 100%);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h3><h4 id="固定尺寸（3种）"><a href="#固定尺寸（3种）" class="headerlink" title="固定尺寸（3种）"></a>固定尺寸（3种）</h4><ul>
+<li><p>absolute + 负margin</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.inner</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: -<span class="number">25px</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">25px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>absolute + calc</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.inner</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="built_in">calc</span>(50% - 25px);</span><br><span class="line">    <span class="attribute">left</span>: <span class="built_in">calc</span>(50% - 25px);</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>absolute + margin:auto</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.inner</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="未知尺寸（3种）"><a href="#未知尺寸（3种）" class="headerlink" title="未知尺寸（3种）"></a>未知尺寸（3种）</h4><ul>
+<li><p>absolute + transform</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.inner</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%,-50%);</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>css-table</p>
+<blockquote>
+<p>table-cell排版特性与block一致， 不同的是<strong>默认宽度是根据内容撑开的</strong>，需要给固定宽度或者使用vw(父元素宽度和父元素宽度)作为默认值</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table-cell;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100vw</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#ccc</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.inner</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line">    <span class="attribute">color</span>: whitesmoke;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>flex</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#ccc</span>;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.inner</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line">    <span class="attribute">color</span>: whitesmoke;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="css3选择器"><a href="#css3选择器" class="headerlink" title="css3选择器"></a>css3选择器</h3><ul>
+<li>关系选择器<ul>
+<li>E F    子元素（包含子元素的子元素…）选择器</li>
+<li>E&gt;F   子元素选择器（只含子元素）</li>
+<li>E~F   兄弟选择器（所有同层元素）</li>
+<li>E+F   相邻选择器（仅命中同层中，下一个元素）</li>
+</ul>
+</li>
+<li>伪对象选择器<ul>
+<li>::after</li>
+<li>::before</li>
+<li>::placehodler</li>
+<li>::selection</li>
+</ul>
+</li>
+<li>伪类选择器<ul>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/link.htm" target="_blank" rel="noopener">E:link</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/visited.htm" target="_blank" rel="noopener">E:visited</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/hover.htm" target="_blank" rel="noopener">E:hover</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/active.htm" target="_blank" rel="noopener">E:active</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/focus.htm" target="_blank" rel="noopener">E:focus</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/lang(fr" target="_blank" rel="noopener">E:lang(fr)</a>.htm)</li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/not(s" target="_blank" rel="noopener">E:not(s)</a>.htm)</li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/root.htm" target="_blank" rel="noopener">E:root</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/first-child.htm" target="_blank" rel="noopener">E:first-child</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/last-child.htm" target="_blank" rel="noopener">E:last-child</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/only-child.htm" target="_blank" rel="noopener">E:only-child</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/nth-child(n" target="_blank" rel="noopener">E:nth-child(n)</a>.htm)</li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/nth-last-child(n" target="_blank" rel="noopener">E:nth-last-child(n)</a>.htm)</li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/first-of-type.htm" target="_blank" rel="noopener">E:first-of-type</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/last-of-type.htm" target="_blank" rel="noopener">E:last-of-type</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/only-of-type.htm" target="_blank" rel="noopener">E:only-of-type</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/nth-of-type(n" target="_blank" rel="noopener">E:nth-of-type(n)</a>.htm)</li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/nth-last-of-type(n" target="_blank" rel="noopener">E:nth-last-of-type(n)</a>.htm)</li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/empty.htm" target="_blank" rel="noopener">E:empty</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/checked.htm" target="_blank" rel="noopener">E:checked</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/enabled.htm" target="_blank" rel="noopener">E:enabled</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/disabled.htm" target="_blank" rel="noopener">E:disabled</a></li>
+<li><a href="http://www.css88.com/book/css/selectors/pseudo-classes/target.htm" target="_blank" rel="noopener">E:target</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, len = arr.length - <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span>; j++) &#123;</span><br><span class="line">        <span class="keyword">const</span> current = arr[j], next = arr[j + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (current &gt; next) &#123;</span><br><span class="line">            arr[j] = next;</span><br><span class="line">            arr[j + <span class="number">1</span>] = current;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-gold-cdn.xitu.io/2018/4/12/162b895b452b306c?imageslim" alt="20180929153823313711017.png"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/浏览器/" rel="tag"># 浏览器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/23/seo优化/" rel="next" title="seo优化">
+                <i class="fa fa-chevron-left"></i> seo优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/01/自动化构建工具/" rel="prev" title="自动化构建工具">
+                自动化构建工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQzMC8xNTk1Nw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Vijay" />
+            
+              <p class="site-author-name" itemprop="name">Vijay</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Vi-jay" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript"><span class="nav-number">1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof和instanceof运算符"><span class="nav-number">1.1.</span> <span class="nav-text">typeof和instanceof运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取对象的类型"><span class="nav-number">1.2.</span> <span class="nav-text">获取对象的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsonp"><span class="nav-number">1.3.</span> <span class="nav-text">jsonp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#去重和排序"><span class="nav-number">1.4.</span> <span class="nav-text">去重和排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块化"><span class="nav-number">1.5.</span> <span class="nav-text">模块化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型转换"><span class="nav-number">1.6.</span> <span class="nav-text">类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#转Boolean"><span class="nav-number">1.6.1.</span> <span class="nav-text">转Boolean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象转基本类型"><span class="nav-number">1.6.2.</span> <span class="nav-text">对象转基本类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较运算符"><span class="nav-number">1.7.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深浅拷贝"><span class="nav-number">1.8.</span> <span class="nav-text">深浅拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浅拷贝"><span class="nav-number">1.8.1.</span> <span class="nav-text">浅拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深拷贝"><span class="nav-number">1.8.2.</span> <span class="nav-text">深拷贝</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决小数计算精度问题"><span class="nav-number">1.9.</span> <span class="nav-text">解决小数计算精度问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器"><span class="nav-number">2.</span> <span class="nav-text">浏览器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#渲染机制"><span class="nav-number">2.1.</span> <span class="nav-text">渲染机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面性能优化"><span class="nav-number">2.2.</span> <span class="nav-text">页面性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重绘（repoint）与回流-reflow"><span class="nav-number">2.2.1.</span> <span class="nav-text">重绘（repoint）与回流(reflow)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#api"><span class="nav-number">2.3.</span> <span class="nav-text">api</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能优化图"><span class="nav-number">2.4.</span> <span class="nav-text">性能优化图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件流"><span class="nav-number">2.5.</span> <span class="nav-text">事件流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#捕获阶段"><span class="nav-number">2.5.1.</span> <span class="nav-text">捕获阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#冒泡阶段"><span class="nav-number">2.5.2.</span> <span class="nav-text">冒泡阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阻止表单提交"><span class="nav-number">2.5.3.</span> <span class="nav-text">阻止表单提交</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#阻止事件冒泡与传递"><span class="nav-number">2.5.3.1.</span> <span class="nav-text">阻止事件冒泡与传递</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动端触摸事件"><span class="nav-number">2.6.</span> <span class="nav-text">移动端触摸事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#script标签"><span class="nav-number">2.7.</span> <span class="nav-text">script标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js获取元素的位置和尺寸"><span class="nav-number">2.8.</span> <span class="nav-text">js获取元素的位置和尺寸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片预加载"><span class="nav-number">2.9.</span> <span class="nav-text">图片预加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#雪碧图"><span class="nav-number">2.10.</span> <span class="nav-text">雪碧图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-number">3.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#盒模型"><span class="nav-number">3.1.</span> <span class="nav-text">盒模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BFC"><span class="nav-number">3.2.</span> <span class="nav-text">BFC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#会新建立一个BFC的情况"><span class="nav-number">3.2.1.</span> <span class="nav-text">会新建立一个BFC的情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BFC排版规则"><span class="nav-number">3.2.2.</span> <span class="nav-text">BFC排版规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BFC有哪些作用"><span class="nav-number">3.2.3.</span> <span class="nav-text">BFC有哪些作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#长宽比（等比例缩放）"><span class="nav-number">3.3.</span> <span class="nav-text">长宽比（等比例缩放）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水平垂直居中"><span class="nav-number">3.4.</span> <span class="nav-text">水平垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#固定尺寸（3种）"><span class="nav-number">3.4.1.</span> <span class="nav-text">固定尺寸（3种）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#未知尺寸（3种）"><span class="nav-number">3.4.2.</span> <span class="nav-text">未知尺寸（3种）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css3选择器"><span class="nav-number">3.5.</span> <span class="nav-text">css3选择器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">4.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">4.1.</span> <span class="nav-text">冒泡排序</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vijay</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
